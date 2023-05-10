@@ -13,13 +13,11 @@ namespace SampleApp.ASPDotNETCore.Controllers
 {
 
     public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+    {       
         private IStudentRepository _studentRepository;
 
-        public HomeController(ILogger<HomeController> logger, IStudentRepository studentRepository)
-        {
-            _logger = logger;
+        public HomeController( IStudentRepository studentRepository)
+        {           
             _studentRepository = studentRepository;
         }
 
@@ -50,13 +48,11 @@ namespace SampleApp.ASPDotNETCore.Controllers
                     }
                     else
                     {
-                        _logger.LogInformation($"Error generated");
                         return this.BadRequest();
                     }
                 }
                 catch(System.Exception ex)
                 {
-                    _logger.LogInformation($"Error generated");
                     return this.BadRequest();
                 }                
             }
